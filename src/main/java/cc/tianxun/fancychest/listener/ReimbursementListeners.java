@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.GameRules;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,9 @@ public class ReimbursementListeners {
 		ServerPlayerEvents.AFTER_RESPAWN.register(ReimbursementListeners::onPlayerRespwan);
 	}
 	public static boolean onEnityDealth(LivingEntity enity, DamageSource source, float v) {
+		if (enity.getWorld().getGameRules().getBoolean(GameRules.KEEP_INVENTORY)) {
+			return true;
+		}
 		if (!(enity instanceof PlayerEntity player)) {
 			return true;
 		}
@@ -133,6 +137,9 @@ public class ReimbursementListeners {
 		return true;
 	}
 	public static void onPlayerRespwan(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {
+		if (oldPlayer.getWorld().getGameRules().getBoolean(GameRules.KEEP_INVENTORY)) {
+			return;
+		}
 		for (ItemStack stack : reswpanItems.get(oldPlayer.getUuidAsString())) {
 			newPlayer.giveItemStack(stack);
 		}
