@@ -79,7 +79,7 @@ public class ReimbursementListeners {
 					newStack.setDamage(0);
 					int level = stack.getEnchantments().getLevel(entry);
 					if (escalationResult.containsKey(stack.getItem())) {
-						if ((level == 2 && Math.random() < 0.05) || (level == 3 && Math.random() < 0.20)) {
+						if ((level == 2 && Math.random() < 0.05) || (level == 3 && Math.random() < 0.15)) {
 							newStack = newStack.copyComponentsToNewStack(escalationResult.get(stack.getItem()),stack.getCount());
 						}
 					}
