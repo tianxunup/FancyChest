@@ -107,6 +107,7 @@ public class ReimbursementListeners {
 				reswpanArmors.get(player.getUuidAsString()).add(ItemStack.EMPTY);
 			}
 		}
+		boolean flag = false;
 		for(RegistryEntry<Enchantment> entry : player.getOffHandStack().getEnchantments().getEnchantments()) {
 			if (entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
 				ItemStack newStack = player.getOffHandStack().copy();
@@ -119,8 +120,12 @@ public class ReimbursementListeners {
 				}
 				removeStacks.add(player.getOffHandStack());
 				reswpanOffhand.put(player.getUuidAsString(),newStack);
+				flag = true;
 				break;
 			}
+		}
+		if (!flag) {
+			reswpanOffhand.put(player.getUuidAsString(),ItemStack.EMPTY);
 		}
 		for (ItemStack stack : removeStacks) {
 			player.getInventory().removeOne(stack);
