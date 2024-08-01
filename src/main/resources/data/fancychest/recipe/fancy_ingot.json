@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "fancychest:fancy_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "fancychest:fancy_ingot"
+  }
+}

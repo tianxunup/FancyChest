@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "fancychest",
+  "version": "${version}",
+  "name": "Fancy Chest",
+  "description": "TianxunUP的幻想箱",
+  "authors": [
+    "TianxunUP"
+  ],
+  "contact": {
+    "website": "https://space.bilibili.com/627871340",
+    "repo": "https://github.com/tianxunup/FancyChest"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/fancychest/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "cc.tianxun.fancychest.client.FancyChestClient"
+    ],
+    "main": [
+      "cc.tianxun.fancychest.FancyChest"
+    ]
+  },
+  "mixins": [
+    "fancychest.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

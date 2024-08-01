@@ -1,0 +1,21 @@
+{
+  "description": {
+    "translate": "enchment.fancychest.reimbursement"
+  },
+  "exclusive_set": "minecraft:vanishing_curse",
+  "supported_items": "#minecraft:enchantable/vanishing",
+  "weight": 2,
+  "max_level": 3,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 25
+  },
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 25
+  },
+  "anvil_cost": 3,
+  "slots": [
+    "any"
+  ]
+}
