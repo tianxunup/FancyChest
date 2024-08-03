@@ -1,7 +1,6 @@
 package cc.tianxun.fancychest.item;
 
 import cc.tianxun.fancychest.FancyChest;
-import cc.tianxun.fancychest.block.FancyChestBlocks;
 import cc.tianxun.fancychest.enchantment.FancyEnchantments;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.item.EnchantedBookItem;
@@ -17,7 +16,7 @@ public class FancyChestItemGroups {
 	public static final ItemGroup FANCYCHEST_ITEMS = Registry.register(Registries.ITEM_GROUP,Identifier.of(FancyChest.MOD_ID,"fancychest_items"),
 		ItemGroup.create(null,-1)
 			.displayName(Text.translatable("itemGroup.fancychest_items"))
-			.icon(() -> new ItemStack(FancyChestBlocks.FANCY_BLOCK))
+			.icon(() -> new ItemStack(FancyChestItems.FANCY_INGOT))
 			.entries((displayContext, entries) -> {
 				entries.add(FancyChestItems.FANCY_BLOCK);
 				entries.add(FancyChestItems.FANCY_ORE);
