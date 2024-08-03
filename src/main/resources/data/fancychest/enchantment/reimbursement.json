@@ -3,7 +3,7 @@
     "translate": "enchment.fancychest.reimbursement"
   },
   "exclusive_set": "minecraft:vanishing_curse",
-  "supported_items": "#minecraft:enchantable/vanishing",
+  "supported_items": "#fancychest:all_item",
   "weight": 2,
   "max_level": 3,
   "min_cost": {

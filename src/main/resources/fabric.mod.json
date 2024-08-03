@@ -15,6 +15,9 @@
   "icon": "assets/fancychest/icon.png",
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "cc.tianxun.fancychest.DataGenerator"
+    ],
     "client": [
       "cc.tianxun.fancychest.client.FancyChestClient"
     ],
