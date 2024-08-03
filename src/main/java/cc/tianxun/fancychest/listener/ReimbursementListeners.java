@@ -23,7 +23,7 @@ import java.util.Map;
 public class ReimbursementListeners {
 	private static final Map<Item, Item> escalationResult = new HashMap<>();
 	private static final Map<String,List<ItemStack>> reswpanItems = new HashMap<>();
-	private static final Map<String,List<ItemStack>> reswpanArmors = new HashMap<>();
+	private static final Map<String,List<ItemStack>> respawnArmors = new HashMap<>();
 	private static final Map<String,ItemStack> reswpanOffhand = new HashMap<>();
 
 	static {
@@ -69,12 +69,12 @@ public class ReimbursementListeners {
 			return true;
 		}
 		reswpanItems.put(player.getUuidAsString(),new ArrayList<>());
-		reswpanArmors.put(player.getUuidAsString(),new ArrayList<>());
+		respawnArmors.put(player.getUuidAsString(),new ArrayList<>());
 		List<ItemStack> removeStacks = new ArrayList<>();
 		// 这里代码写得跟shi一样，以后再优化吧：）
 		for (ItemStack stack : player.getInventory().main) {
 			for(RegistryEntry<Enchantment> entry : stack.getEnchantments().getEnchantments()) {
-				if (entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
+				if (entry.getKey().isPresent() && entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
 					ItemStack newStack = stack.copy();
 					newStack.setDamage(0);
 					int level = stack.getEnchantments().getLevel(entry);
@@ -92,7 +92,7 @@ public class ReimbursementListeners {
 		for (ItemStack stack : player.getInventory().armor) {
 			boolean flag = false;
 			for(RegistryEntry<Enchantment> entry : stack.getEnchantments().getEnchantments()) {
-				if (entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
+				if (entry.getKey().isPresent() && entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
 					ItemStack newStack = stack.copy();
 					newStack.setDamage(0);
 					int level = stack.getEnchantments().getLevel(entry);
@@ -102,18 +102,18 @@ public class ReimbursementListeners {
 						}
 					}
 					removeStacks.add(stack);
-					reswpanArmors.get(player.getUuidAsString()).add(newStack);
+					respawnArmors.get(player.getUuidAsString()).add(newStack);
 					flag = true;
 					break;
 				}
 			}
 			if (!flag) {
-				reswpanArmors.get(player.getUuidAsString()).add(ItemStack.EMPTY);
+				respawnArmors.get(player.getUuidAsString()).add(ItemStack.EMPTY);
 			}
 		}
 		boolean flag = false;
 		for(RegistryEntry<Enchantment> entry : player.getOffHandStack().getEnchantments().getEnchantments()) {
-			if (entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
+			if (entry.getKey().isPresent() && entry.getKey().get().equals(FancyEnchantments.REIMBURSEMENT)) {
 				ItemStack newStack = player.getOffHandStack().copy();
 				newStack.setDamage(0);
 				int level =player.getOffHandStack().getEnchantments().getLevel(entry);
@@ -144,13 +144,13 @@ public class ReimbursementListeners {
 			newPlayer.giveItemStack(stack);
 		}
 		int i=0;
-		for (ItemStack stack : reswpanArmors.get(oldPlayer.getUuidAsString())) {
+		for (ItemStack stack : respawnArmors.get(oldPlayer.getUuidAsString())) {
 			newPlayer.getInventory().armor.set(i,stack);
 			i++;
 		}
 		newPlayer.getInventory().offHand.set(0,reswpanOffhand.get(oldPlayer.getUuidAsString()));
 		reswpanItems.remove(oldPlayer.getUuidAsString());
-		reswpanArmors.remove(oldPlayer.getUuidAsString());
+		respawnArmors.remove(oldPlayer.getUuidAsString());
 		reswpanOffhand.remove(oldPlayer.getUuidAsString());
 	}
 }
