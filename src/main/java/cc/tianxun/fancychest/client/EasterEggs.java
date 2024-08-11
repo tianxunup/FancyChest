@@ -11,11 +11,10 @@ import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 
-import java.util.Random;
-
 @Environment(EnvType.CLIENT)
 public class EasterEggs {
 	private final static int tiggerableMethodCount = 3;
+	private static long lastTigger = 0;
 	public static void checkEcnhantmentAndTiggerOne(MinecraftClient client) {
 		if (client.player == null) {
 			return;
@@ -31,8 +30,12 @@ public class EasterEggs {
 		if (client.player == null) {
 			return;
 		}
+		if (System.currentTimeMillis()-lastTigger > 100) {
+			return;
+		}
+		lastTigger = System.currentTimeMillis();
 		client.player.sendMessage(Text.translatable("debug.fancychest.donot_click.clicked"));
-		int tiggeredMethodId = new Random().nextInt(tiggerableMethodCount);
+		int tiggeredMethodId = (int) (System.currentTimeMillis()%tiggerableMethodCount);
 		switch (tiggeredMethodId) {
 			case 0: openRickroll(client);break;
 			case 1: client.getWindow().setScaleFactor(10);break;
