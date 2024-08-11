@@ -1,6 +1,5 @@
 package cc.tianxun.fancychest.client;
 
-import cc.tianxun.fancychest.FancyChest;
 import cc.tianxun.fancychest.enchantment.FancyEnchantments;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -8,6 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
+import net.minecraft.util.Util;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWVidMode;
 
@@ -30,7 +30,7 @@ public class EasterEggs {
 		if (client.player == null) {
 			return;
 		}
-		if (System.currentTimeMillis()-lastTigger > 100) {
+		if (System.currentTimeMillis()-lastTigger < 300) {
 			return;
 		}
 		lastTigger = System.currentTimeMillis();
@@ -47,24 +47,7 @@ public class EasterEggs {
 		if (Math.random() < 0.3) {
 			makeWindowEasyToUseForOld(client);
 		}
-//		Desktop desktop = Desktop. getDesktop();
-//		if (Desktop.isDesktopSupported() && desktop.isSupported(Desktop.Action.BROWSE)) {
-//			try {
-//				URI uri = new URI(rickrollUrl);
-//				desktop.browse(uri);
-//			}
-//			catch (Exception e) {
-//				FancyChest.LOGGER.error(e.toString());
-//			}
-//		}
-		try {
-			Runtime.getRuntime().exec(new String[]{"cmd","/c","start",rickrollUrl});
-			client.player.sendMessage(Text.translatable("text.fancychest.donot_click.rickrolled"));
-		}
-		catch (Exception e) {
-			FancyChest.LOGGER.error(e.toString());
-			makeWindowEasyToUseForOld(client);
-		}
+		Util.getOperatingSystem().open(rickrollUrl);
 	}
 	private static void makeWindowEasyToUseForOld(MinecraftClient client) {
 		if (client.getWindow().getScaleFactor() >= 9) return;
@@ -86,7 +69,7 @@ public class EasterEggs {
 			client.getWindow().setWindowedSize(854,480);
 			int x=0 , y=client.getWindow().getY();
 			client.mouse.unlockCursor();
-			client.openGameMenu(false);
+//			client.openGameMenu(false);
 			while (!client.getWindow().shouldClose()) {
 				if (client.getWindow().isFullscreen()) {
 					client.getWindow().toggleFullscreen();
