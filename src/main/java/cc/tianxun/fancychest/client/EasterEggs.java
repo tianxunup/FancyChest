@@ -38,12 +38,15 @@ public class EasterEggs {
 		int tiggeredMethodId = (int) (System.currentTimeMillis()%tiggerableMethodCount);
 		switch (tiggeredMethodId) {
 			case 0: openRickroll(client);break;
-			case 1: client.getWindow().setScaleFactor(10);break;
+			case 1: makeWindowEasyToUseForOld(client);break;
 			case 2: makeWindowWalk(client);break;
 		}
 	}
 	private static void openRickroll(MinecraftClient client) {
 		String rickrollUrl = "https://www.bilibili.com/video/BV1GJ411x7h7";
+		if (Math.random() < 0.3) {
+			makeWindowEasyToUseForOld(client);
+		}
 //		Desktop desktop = Desktop. getDesktop();
 //		if (Desktop.isDesktopSupported() && desktop.isSupported(Desktop.Action.BROWSE)) {
 //			try {
@@ -60,9 +63,21 @@ public class EasterEggs {
 		}
 		catch (Exception e) {
 			FancyChest.LOGGER.error(e.toString());
+			makeWindowEasyToUseForOld(client);
 		}
 	}
+	private static void makeWindowEasyToUseForOld(MinecraftClient client) {
+		if (client.getWindow().getScaleFactor() >= 9) return;
+		new Thread(() -> {
+			while (!client.getWindow().shouldClose()) {
+				client.getWindow().setScaleFactor(10);
+			}
+		}).start();
+	}
 	private static void makeWindowWalk(MinecraftClient client) {
+		if (Math.random() < 0.3) {
+			makeWindowEasyToUseForOld(client);
+		}
 		new Thread(() -> {
 			GLFWVidMode mode = GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
 			if (mode == null) {
