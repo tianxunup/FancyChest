@@ -1,7 +1,10 @@
 {
   "enchment.fancychest.reimbursement": "理赔",
+  "enchment.fancychest.donot_click": "§c千万别点",
   "itemGroup.fancychest_items": "Fancy Chest 物品",
   "block.fancychest.fancy_block": "幻想方块",
   "block.fancychest.fancy_ore": "幻想矿",
-  "item.fancychest.fancy_ingot": "幻想锭"
+  "item.fancychest.fancy_ingot": "幻想锭",
+  "debug.fancychest.donot_click.clicked": "你点击了 \"千万别点\"",
+  "text.fancychest.donot_click.rickrolled": "你被骗了！"
 }

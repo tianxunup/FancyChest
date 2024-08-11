@@ -1,7 +1,10 @@
 {
   "enchment.fancychest.reimbursement": "Reimbursement",
+  "enchment.fancychest.donot_click": "§cDo Not CLICK",
   "itemGroup.fancychest_items": "Fancy Chest Items",
   "block.fancychest.fancy_block": "Fancy Block",
   "block.fancychest.fancy_ore": "Fancy Ore",
-  "item.fancychest.fancy_ingot": "Fancy Ingot"
+  "item.fancychest.fancy_ingot": "Fancy Ingot",
+  "debug.fancychest.donot_click.clicked": "You clicked \"Do not Click\"",
+  "text.fancychest.donot_click.rickrolled": "You were rickrolled!"
 }
