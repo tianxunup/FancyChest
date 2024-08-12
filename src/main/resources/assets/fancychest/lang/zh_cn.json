@@ -5,6 +5,7 @@
   "block.fancychest.fancy_block": "幻想方块",
   "block.fancychest.fancy_ore": "幻想矿",
   "item.fancychest.fancy_ingot": "幻想锭",
-  "debug.fancychest.donot_click.clicked": "你点击了 \"千万别点\"",
-  "text.fancychest.donot_click.rickrolled": "你被骗了！"
+  "text.fancychest.donot_click.rickrolled": "§l§c你被骗了！",
+  "donot_click.screen.title": "警告",
+  "donot_click.screen.message": "Mod作者不会受理由于点击\"千万别点\"造成的任何bug。\n这是最后的警告，确定继续吗？"
 }

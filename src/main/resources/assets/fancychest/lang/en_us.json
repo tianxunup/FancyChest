@@ -5,6 +5,7 @@
   "block.fancychest.fancy_block": "Fancy Block",
   "block.fancychest.fancy_ore": "Fancy Ore",
   "item.fancychest.fancy_ingot": "Fancy Ingot",
-  "debug.fancychest.donot_click.clicked": "You clicked \"Do not Click\"",
-  "text.fancychest.donot_click.rickrolled": "You were rickrolled!"
+  "text.fancychest.donot_click.rickrolled": "§l§cYou've been rickrolled!",
+  "donot_click.screen.title": "Warning",
+  "donot_click.screen.message": "The mod author will not fix bugs after you clicked \"Do not click\".\nIt's the last waring, do you want to continue?"
 }

@@ -12,7 +12,7 @@ public class FancyChestClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		FancyChest.LOGGER.info("Initializing Client");
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.mouse.wasLeftButtonClicked()) {
+			if (client.mouse.wasLeftButtonClicked() || client.mouse.wasRightButtonClicked()) {
 				EasterEggs.checkEcnhantmentAndTiggerOne(client);
 			}
 		});
