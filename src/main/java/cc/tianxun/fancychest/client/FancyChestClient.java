@@ -8,12 +8,14 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 @Environment(EnvType.CLIENT)
 public class FancyChestClient implements ClientModInitializer {
+	boolean tiggered = false;
 	@Override
 	public void onInitializeClient() {
 		FancyChest.LOGGER.info("Initializing Client");
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.mouse.wasLeftButtonClicked() || client.mouse.wasRightButtonClicked()) {
+			if ((client.mouse.wasLeftButtonClicked() || client.mouse.wasRightButtonClicked())&&!tiggered) {
 				EasterEggs.checkEcnhantmentAndTiggerOne(client);
+				tiggered = true;
 			}
 		});
 	}
