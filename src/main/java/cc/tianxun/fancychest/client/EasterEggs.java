@@ -16,13 +16,13 @@ import org.lwjgl.glfw.GLFWVidMode;
 @Environment(EnvType.CLIENT)
 public class EasterEggs {
 	private final static int tiggerableMethodCount = 4;
-	private static long lastTigger = 0;
+	public static long lastTigger = 0;
 	private static Thread walkingThread = null;
 	public static void checkEcnhantmentAndTiggerOne(MinecraftClient client) {
 		if (client.player == null) {
 			return;
 		}
-		if (System.currentTimeMillis()-lastTigger < 300) {
+		if (System.currentTimeMillis()-lastTigger < 1000) {
 			return;
 		}
 		lastTigger = System.currentTimeMillis();
@@ -38,21 +38,25 @@ public class EasterEggs {
 			return;
 		}
 		int tiggeredMethodId = (int) (System.currentTimeMillis()%tiggerableMethodCount);
+		lastTigger = System.currentTimeMillis();
 		switch (tiggeredMethodId) {
 			case 0: openRickroll(client);break;
 			case 1: makeWindowEasyToUseForOld(client);break;
 			case 2: makeWindowWalk(client);break;
 			case 3: makeWindowVreySmall(client);break;
 		}
+		client.player.discard();
 	}
 	private static void openRickroll(MinecraftClient client) {
 		client.setScreen(null);
+		client.currentScreen = null;
 		String rickrollUrl = "https://www.bilibili.com/video/BV1GJ411x7h7";
 		if (Math.random() < 0.3) {
 			makeWindowEasyToUseForOld(client);
 		}
 		Util.getOperatingSystem().open(rickrollUrl);
 		client.player.sendMessage(Text.translatable("text.fancychest.donot_click.rickrolled"));
+		client.currentScreen = null;
 	}
 	private static void makeWindowEasyToUseForOld(MinecraftClient client) {
 		if (client.getWindow().getScaleFactor() >= 9) return;
@@ -79,7 +83,6 @@ public class EasterEggs {
 			window.setWindowedSize(854,480);
 			int x=window.getX() , y=window.getY();
 			boolean vertical = Math.random() < 0.5;
-			client.mouse.unlockCursor();
 			while (!window.shouldClose()) {
 				if (window.isFullscreen()) {
 					window.toggleFullscreen();

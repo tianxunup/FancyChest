@@ -27,6 +27,7 @@ public class DonotClickWarningScreen extends ConfirmScreen {
 class Consumer implements BooleanConsumer {
 	@Override
 	public void accept(boolean t) {
+		EasterEggs.lastTigger = System.currentTimeMillis();
 		MinecraftClient.getInstance().setScreen(null);
 		EasterEggs.tiggerOne(MinecraftClient.getInstance());
 		MinecraftClient.getInstance().setScreen(null);
