@@ -19,3 +19,8 @@ bilibili视频介绍：https://www.bilibili.com/video/BV1cuiTeqEwA
 当游戏规则“保留物品栏”开启时，该附魔不会有任何效果。
 
 目前因为技术原因未添加到“Fancy Chest物品”创造模式物品分类，但你仍然能在“原材料”分类中找到它。
+
+### 附魔：千万别点
+bilibili视频：（未发布）
+
+自己试试，我讲了就没意思了。
